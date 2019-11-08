@@ -1,4 +1,3 @@
-import argparse
 from sudoku import Sudoku
 
 
@@ -59,8 +58,7 @@ def backtrack(assignment, sudoku):
     return False
 
 
-# Most Constrained Variable heuristic
-# Pick the unassigned variable that has fewest legal values remaining.
+# Most Constrained 
 def select_unassigned_variable(assignment, sudoku):
     unassigned = [v for v in sudoku.variables if v not in assignment]
     return min(unassigned, key=lambda var: len(sudoku.domains[var]))
@@ -76,11 +74,9 @@ def order_domain_values(sudoku, var):
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('board')
-    args = parser.parse_args()
-
-    sudoku = Sudoku(args.board)
+    input=open('input.txt','r')
+    puzzle=input.read() 
+    sudoku = Sudoku(puzzle)
 
     if ac3(sudoku):
 
@@ -107,13 +103,24 @@ def main():
             if assignment:
 
                 output = open('output.txt', 'w')
+                i=0
                 for var in sudoku.variables:
+                    i=1+i
                     output.write(str(sudoku.domains[var]))
+                    if(i%3==0):
+                        output.write("\t")
+                    if(i%9==0):
+                        output.write("\n")
+                        if(i%27==0):
+                            output.write("\n")
+
+                    
                 output.close()
 
             else:
-                print "No solution exists"
+                print ("No solution exists")
 
 
 if __name__ == '__main__':
     main()
+
