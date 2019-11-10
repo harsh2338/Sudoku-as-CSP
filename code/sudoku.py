@@ -137,4 +137,3 @@ class Sudoku:
 
         elif mode == 'file':
             return
-

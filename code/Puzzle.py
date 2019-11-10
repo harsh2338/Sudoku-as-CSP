@@ -82,8 +82,17 @@ def main():
 
         if sudoku.solved():
             output = open('output.txt', 'w')
+            i=0
             for var in sudoku.variables:
+                i=1+i
                 output.write(str(sudoku.domains[var][0]))
+                if(i%3==0):
+                    output.write("\t")
+                if(i%9==0):
+                    output.write("\n")
+                    if(i%27==0):
+                        output.write("\n")
+
             output.close()
 
         else:
@@ -97,8 +106,7 @@ def main():
             assignment = backtrack(assignment, sudoku)
 
             for d in sudoku.domains:
-                sudoku.domains[d] = assignment[d] if len(
-                    d) > 1 else sudoku.domains[d]
+                sudoku.domains[d] = assignment[d] if len(d) > 1 else sudoku.domains[d]
 
             if assignment:
 
