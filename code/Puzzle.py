@@ -1,4 +1,5 @@
 from sudoku import Sudoku
+import sys
 
 
 def ac3(sudoku):
@@ -76,7 +77,12 @@ def order_domain_values(sudoku, var):
 def main():
     input=open('input.txt','r')
     puzzle=input.read() 
+    if (len(puzzle)<81):
+        print("Invalid puzzle")
+        sys.exit()
     sudoku = Sudoku(puzzle)
+
+
 
     if ac3(sudoku):
 

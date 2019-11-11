@@ -100,7 +100,8 @@ class Sudoku:
                     self.pruned[var].append((neighbor, value))
 
     @staticmethod
-    def constraint(xi, xj): return xi != xj
+    def constraint(xi, xj): 
+        return xi != xj
 
     @staticmethod
     def combine(alpha, beta):

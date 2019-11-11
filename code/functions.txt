@@ -1,1 +1,17 @@
 itertools.permutations N!
+
+
+VAriables
+        self.variables=list()
+        self.domains=dict()
+        self.constraints=list()
+        self.neighbors=dict()
+        self.pruned = dict()
+1)AC3
+    take each constraint and then revise the domains
+2)Back
+    recursive
+    mcv
+    order domain
+    consistent
+
